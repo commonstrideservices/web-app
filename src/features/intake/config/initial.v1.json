@@ -1,0 +1,78 @@
+{
+  "id": "initial-inquiry",
+  "version": 1,
+  "title": "Connect with us",
+  "steps": [
+    {
+      "id": "service-interests",
+      "type": "multiple-choice",
+      "prompt": "Which services are you interested in?",
+      "helpText": "Select all that apply, or choose Help me choose if you're unsure.",
+      "required": true,
+      "optionSource": "service-categories",
+      "options": [{ "id": "help-me-choose", "label": "Help me choose" }]
+    },
+    {
+      "id": "project-goal",
+      "type": "long-text",
+      "prompt": "What would you like us to help you get done?",
+      "helpText": "A sentence or two is enough. Tell us what you want to achieve or what is taking up too much of your time.",
+      "required": true,
+      "maxLength": 600
+    },
+    {
+      "id": "current-setup",
+      "type": "multiple-choice",
+      "prompt": "What do you already have in place?",
+      "helpText": "Select what is relevant to the work you have in mind, or choose Starting from scratch.",
+      "required": true,
+      "options": [
+        { "id": "website", "label": "A website" },
+        { "id": "social-accounts", "label": "Business social media accounts" },
+        { "id": "lead-list-or-crm", "label": "A lead list or CRM" },
+        { "id": "team-or-process", "label": "A team or an existing process for the work" },
+        { "id": "starting-from-scratch", "label": "Starting from scratch", "exclusive": true }
+      ],
+      "note": { "label": "Additional setup details", "maxLength": 300 }
+    },
+    {
+      "id": "start-timeline",
+      "type": "single-choice",
+      "prompt": "When would you like to get started?",
+      "required": true,
+      "options": [
+        { "id": "within-two-weeks", "label": "Within two weeks" },
+        { "id": "two-to-four-weeks", "label": "After two weeks, within a month" },
+        { "id": "over-a-month", "label": "More than a month from now" },
+        { "id": "no-target-date", "label": "I don't have a target date yet" }
+      ]
+    },
+    {
+      "id": "budget-range",
+      "type": "short-text",
+      "prompt": "Do you have a budget range in mind?",
+      "helpText": "Include the currency and whether it's a one-time or monthly budget. If you don't have a budget yet, enter Not sure yet.",
+      "required": true,
+      "maxLength": 120
+    },
+    {
+      "id": "callback-availability",
+      "type": "short-text",
+      "prompt": "When is a good time for us to call?",
+      "helpText": "Share the days or times that work for you, along with your time zone. If any time works, enter Flexible.",
+      "required": true,
+      "maxLength": 160
+    },
+    {
+      "id": "contact-details",
+      "type": "contact-details",
+      "prompt": "How can we reach you?",
+      "fields": [
+        { "id": "name", "label": "Your name", "type": "text", "required": true },
+        { "id": "companyName", "label": "Company name", "type": "text", "required": true },
+        { "id": "phone", "label": "Phone number", "type": "tel", "required": true },
+        { "id": "email", "label": "Email address", "type": "email", "required": true }
+      ]
+    }
+  ]
+}

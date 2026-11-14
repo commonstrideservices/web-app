@@ -1,0 +1,211 @@
+{
+  "categories": [
+    {
+      "id": "web-services",
+      "name": "Web Services",
+      "description": "Get a website for your business, custom software for your team, or ongoing help with hosting and maintenance.",
+      "seo": {
+        "title": "Website & Custom Software Development",
+        "description": "Common Stride builds business websites, custom web applications, client portals, and internal tools, with hosting and maintenance support."
+      },
+      "hero": {
+        "image": "/images/services/web-services.webp",
+        "alt": "A laptop, keyboard, and mouse on a sunlit desk",
+        "introduction": "Build a website that helps customers find and contact you, or get custom software that fits how your business works. We can help plan, build, launch, and maintain both."
+      },
+      "offerings": [
+        {
+          "id": "static-web-development",
+          "name": "Website Development",
+          "description": "Give customers a clear place to learn about your business and take the next step. We build everything from simple landing pages to sites your team can update with new content, listings, or services.",
+          "examples": [
+            "Business websites and landing pages",
+            "Editable pages, blogs, and listings",
+            "Mobile-friendly layouts and inquiry forms"
+          ]
+        },
+        {
+          "id": "dynamic-web-development",
+          "name": "Custom Software & Web Applications",
+          "description": "Build a tool around a task your team or customers need to complete. We can turn spreadsheet and email workflows into a browser-based application where people can submit requests, track progress, or manage records in one place.",
+          "examples": [
+            "Client portals and self-service forms",
+            "Internal dashboards and admin tools",
+            "Custom CRM workflows and automations",
+            "Integrations with the software you already use"
+          ]
+        },
+        {
+          "id": "web-hosting-maintenance",
+          "name": "Web Hosting & Maintenance",
+          "description": "Help getting your website online and taking care of routine upkeep. We can agree on what you want handled after launch, from hosting setup to regular updates.",
+          "examples": ["Hosting, domain, and HTTPS setup", "Routine updates and backups", "Troubleshooting common site issues"]
+        }
+      ]
+    },
+    {
+      "id": "social-media",
+      "name": "Social Media",
+      "description": "Get support with the content and day-to-day work of showing up consistently on social media.",
+      "seo": {
+        "title": "Social Media Management & Content",
+        "description": "Plan, create, and publish social media content with Common Stride. Get help with content calendars, short-form videos, community engagement, and reporting."
+      },
+      "hero": {
+        "image": "/images/services/social-media.webp",
+        "alt": "A phone resting on a laptop beside coffee and a notebook",
+        "introduction": "Give your social channels a clearer plan and a steadier posting rhythm. We can help turn your ideas into content and handle the everyday work of keeping up with your audience."
+      },
+      "offerings": [
+        {
+          "id": "content-planning",
+          "name": "Content Planning & Strategy",
+          "description": "Create a consistent social media presence with a clear content direction. We help plan content around your business goals, target audience, promotions, and upcoming events so your brand stays relevant and active.",
+          "examples": [
+            "Monthly content calendars",
+            "Content strategy and planning",
+            "Post ideas and topic research",
+            "Campaign and promotional planning",
+            "Audience and competitor research",
+            "Brand voice and messaging guidelines"
+          ]
+        },
+        {
+          "id": "post-design-scheduling",
+          "name": "Content Creation & Publishing",
+          "description": "Turn your ideas into engaging content that represents your brand. We help create visuals, write captions, and organize posts to maintain a professional and consistent presence across your social media platforms.",
+          "examples": [
+            "Social media graphics and carousel designs",
+            "Reels and short-form video editing",
+            "Caption and copywriting",
+            "Hashtag research",
+            "Branded templates and visual content",
+            "Post scheduling and publishing"
+          ]
+        },
+        {
+          "id": "community-management",
+          "name": "Community Management & Engagement",
+          "description": "Build stronger relationships with your audience by keeping your social media channels active and responsive. We help manage everyday interactions, respond to routine inquiries, and keep your audience engaged while ensuring important concerns reach your team.",
+          "examples": [
+            "Monitoring comments and direct messages",
+            "Responding to routine customer inquiries",
+            "Community engagement and interaction",
+            "Lead and inquiry monitoring",
+            "Customer inquiry routing and follow-ups",
+            "Social media performance tracking and reporting"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "lead-data-resources",
+      "name": "Lead Data Resources",
+      "description": "Organize the prospect data your team needs for research, outreach, and follow-up.",
+      "seo": {
+        "title": "Lead Research, List Building & Verification",
+        "description": "Find prospects that fit your target market, build targeted lead lists, verify contact details, and maintain your CRM with Common Stride."
+      },
+      "hero": {
+        "image": "/images/services/lead-data-resources.webp",
+        "alt": "A laptop displaying a spreadsheet on a desk",
+        "introduction": "Give your team a clearer view of who to reach out to and what you already know about them. We can research prospects, assemble lists, and tidy the records your team uses for outreach."
+      },
+      "offerings": [
+        {
+          "id": "prospect-research",
+          "name": "Lead Research & Identification",
+          "description": "Identify potential customers and businesses that match your target market. We research relevant industries, locations, and business profiles to help your team find the right prospects.",
+          "examples": [
+            "Target market and industry research",
+            "Business and contact identification",
+            "Decision-maker research",
+            "Competitor and market research",
+            "Prospect qualification based on set criteria"
+          ]
+        },
+        {
+          "id": "lead-list-building",
+          "name": "Data Collection & Organization",
+          "description": "Gather and organize valuable business and contact information into structured databases your team can easily access and use for outreach.",
+          "examples": [
+            "Business name and contact details",
+            "Email addresses and phone numbers",
+            "Decision-maker names and job titles",
+            "Targeted lead list creation",
+            "Spreadsheet and CRM data entry"
+          ]
+        },
+        {
+          "id": "data-enrichment-cleanup",
+          "name": "Database Management & Verification",
+          "description": "Keep your lead databases accurate, organized, and ready for your next campaign. We review existing records, check available information, and maintain consistent data quality.",
+          "examples": [
+            "Email and phone number verification",
+            "Duplicate data identification and removal",
+            "Lead database updates",
+            "Data formatting and standardization",
+            "Missing information identification",
+            "CRM database maintenance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "va-services",
+      "name": "VA Services",
+      "description": "Get virtual assistance and specialist support for business operations, sales, marketing, and technology.",
+      "seo": {
+        "title": "Virtual Assistant Services & Business Operations",
+        "description": "Get virtual assistant and specialist support from Common Stride for admin, business operations, appointment setting, client acquisition, and CRM automation."
+      },
+      "hero": {
+        "image": "/images/services/va-services.webp",
+        "alt": "A person working at a desk with a laptop and notebook",
+        "introduction": "Get help with daily business operations, bring in sales and marketing support, or work with specialists on your CRM and other tools."
+      },
+      "offerings": [
+        {
+          "id": "virtual-assistance-business-operations",
+          "name": "Virtual Assistance & Business Operations",
+          "description": "Get reliable support with your daily business operations. We provide skilled virtual assistants who help keep your business organized, efficient, and running smoothly.",
+          "examples": [
+            "Executive and Administrative VA",
+            "Medical Virtual Assistants",
+            "Real Estate Support",
+            "Shopify Store Management",
+            "Bookkeeping and Invoice Management",
+            "Rental Management",
+            "Logistics and Tracking",
+            "Operations and Team Managers"
+          ]
+        },
+        {
+          "id": "sales-marketing-client-acquisition",
+          "name": "Sales, Marketing & Client Acquisition",
+          "description": "Build your customer base and increase revenue with dedicated sales and marketing professionals. We help businesses connect with potential customers, generate opportunities, and convert leads into clients.",
+          "examples": [
+            "Cold Callers and Appointment Setters",
+            "Sales Closers",
+            "Client Acquisition Specialists",
+            "Lead Generation",
+            "Copywriting and Content Creation",
+            "Sales and Account Management"
+          ]
+        },
+        {
+          "id": "technology-development-specialized-services",
+          "name": "Technology, Development & Specialized Services",
+          "description": "Streamline your business with technology-driven solutions and specialized support. From custom applications to CRM development, we help simplify processes and improve your digital operations.",
+          "examples": [
+            "CRM Development and Automation",
+            "Customized Web Applications",
+            "ESL (English as a Second Language) Support",
+            "Shopify Technical Support",
+            "Business Process Solutions"
+          ]
+        }
+      ]
+    }
+  ]
+}

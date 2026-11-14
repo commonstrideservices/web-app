@@ -1,0 +1,17 @@
+[
+  {
+    "nickname": "Sam",
+    "specialty": "Executive and Administrative VA",
+    "photo": "/images/people/sample-sam.webp"
+  },
+  {
+    "nickname": "Alex",
+    "specialty": "Real Estate Support",
+    "photo": "/images/people/sample-alex.webp"
+  },
+  {
+    "nickname": "Jamie",
+    "specialty": "Shopify Store Management",
+    "photo": "/images/people/sample-jamie.webp"
+  }
+]

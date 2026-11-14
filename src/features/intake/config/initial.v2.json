@@ -1,0 +1,94 @@
+{
+  "id": "initial-inquiry",
+  "version": 2,
+  "title": "Connect with us",
+  "steps": [
+    {
+      "id": "service-interests",
+      "type": "multiple-choice",
+      "prompt": "What can we help you with?",
+      "helpText": "Select all that apply, or choose Help me choose on its own.",
+      "required": true,
+      "optionSource": "service-categories",
+      "options": [{ "id": "help-me-choose", "label": "Help me choose", "exclusive": true }],
+      "note": {
+        "label": "Tell us a little more",
+        "helpText": "A sentence or two is enough. For example, you might need a client portal, help scheduling social posts, leads at dental clinics, or someone to manage your inbox.",
+        "maxLength": 600
+      }
+    },
+    {
+      "id": "industry",
+      "type": "single-choice",
+      "prompt": "What industry is your business in?",
+      "helpText": "Choose your main industry. If you’re looking for leads in another industry, you can mention who you want to reach in step 1.",
+      "required": true,
+      "options": [
+        { "id": "real-estate-property", "label": "Real Estate & Property" },
+        { "id": "healthcare-wellness", "label": "Healthcare & Wellness" },
+        { "id": "retail-ecommerce", "label": "Retail & E-commerce" },
+        { "id": "professional-services", "label": "Professional Services" },
+        { "id": "technology", "label": "Technology" },
+        { "id": "hospitality-travel", "label": "Hospitality & Travel" },
+        { "id": "logistics-transportation", "label": "Logistics & Transportation" },
+        { "id": "education-training", "label": "Education & Training" },
+        { "id": "other", "label": "Other" }
+      ],
+      "other": { "optionId": "other", "label": "Your industry", "maxLength": 120 }
+    },
+    {
+      "id": "current-setup",
+      "type": "multiple-choice",
+      "prompt": "What do you already have in place?",
+      "helpText": "Select what’s relevant to the work, or choose Starting from scratch.",
+      "required": true,
+      "options": [
+        { "id": "website", "label": "A website or app" },
+        { "id": "social-accounts", "label": "Business social media accounts" },
+        { "id": "lead-list-or-crm", "label": "A lead list or CRM" },
+        { "id": "team-or-process", "label": "An existing team or process" },
+        { "id": "starting-from-scratch", "label": "Starting from scratch", "exclusive": true }
+      ],
+      "note": { "label": "Additional setup details", "maxLength": 300 }
+    },
+    {
+      "id": "start-timeline",
+      "type": "single-choice",
+      "prompt": "When would you like to start?",
+      "required": true,
+      "options": [
+        { "id": "within-two-weeks", "label": "Within two weeks" },
+        { "id": "two-to-four-weeks", "label": "In two to four weeks" },
+        { "id": "over-a-month", "label": "More than a month from now" },
+        { "id": "no-target-date", "label": "Just exploring or no target date yet" }
+      ]
+    },
+    {
+      "id": "budget-range",
+      "type": "single-choice",
+      "prompt": "Do you have a budget in mind?",
+      "required": true,
+      "options": [
+        { "id": "has-range", "label": "I have a range" },
+        { "id": "needs-estimate", "label": "I’d like an estimate" }
+      ],
+      "other": {
+        "optionId": "has-range",
+        "label": "Budget range",
+        "helpText": "Include the amount, currency, and whether it’s one-time or monthly. For example, USD 500–800 per month.",
+        "maxLength": 120
+      }
+    },
+    {
+      "id": "contact-details",
+      "type": "contact-details",
+      "prompt": "How can we reach you?",
+      "fields": [
+        { "id": "name", "label": "Your name", "type": "text", "required": true },
+        { "id": "companyName", "label": "Company name", "type": "text", "required": true },
+        { "id": "phone", "label": "Phone number", "type": "tel", "required": true },
+        { "id": "email", "label": "Email address", "type": "email", "required": true }
+      ]
+    }
+  ]
+}
