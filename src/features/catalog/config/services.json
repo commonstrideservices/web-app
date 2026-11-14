@@ -154,55 +154,53 @@
     {
       "id": "va-services",
       "name": "VA Services",
-      "description": "Get virtual assistance and specialist support for business operations, sales, marketing, and technology.",
+      "description": "Get virtual assistance for daily business operations, industry-specific workflows, sales, and marketing.",
       "seo": {
         "title": "Virtual Assistant Services & Business Operations",
-        "description": "Get virtual assistant and specialist support from Common Stride for admin, business operations, appointment setting, client acquisition, and CRM automation."
+        "description": "Get virtual assistant and industry-specific support from Common Stride for business operations, bookkeeping, sales, marketing, and client acquisition."
       },
       "hero": {
         "image": "/images/services/va-services.webp",
         "alt": "A person working at a desk with a laptop and notebook",
-        "introduction": "Get help with daily business operations, bring in sales and marketing support, or work with specialists on your CRM and other tools."
+        "introduction": "Get help with daily business operations, work with specialists who understand your industry, or bring in sales and marketing support."
       },
       "offerings": [
         {
           "id": "virtual-assistance-business-operations",
           "name": "Virtual Assistance & Business Operations",
-          "description": "Get reliable support with your daily business operations. We provide skilled virtual assistants who help keep your business organized, efficient, and running smoothly.",
+          "description": "Get reliable support with your daily business operations. Our skilled virtual assistants keep your business organized, efficient, and running smoothly.",
           "examples": [
-            "Executive and Administrative VA",
+            "Executive Virtual Assistants (calendar, inbox, scheduling, travel, and expenses)",
+            "Administrative Virtual Assistants",
+            "Operations and Team Managers",
+            "Logistics and Tracking"
+          ]
+        },
+        {
+          "id": "specialized-industry-support",
+          "name": "Specialized & Industry Support",
+          "description": "Get support from professionals trained in your industry’s tools, terms, and workflows, so you spend less time on training and see results sooner.",
+          "examples": [
             "Medical Virtual Assistants",
             "Real Estate Support",
+            "Rental and Property Management",
             "Shopify Store Management",
             "Bookkeeping and Invoice Management",
-            "Rental Management",
-            "Logistics and Tracking",
-            "Operations and Team Managers"
+            "ESL (English as a Second Language) Support"
           ]
         },
         {
           "id": "sales-marketing-client-acquisition",
           "name": "Sales, Marketing & Client Acquisition",
-          "description": "Build your customer base and increase revenue with dedicated sales and marketing professionals. We help businesses connect with potential customers, generate opportunities, and convert leads into clients.",
+          "description": "Build your customer base and increase revenue with dedicated sales and marketing professionals. We help you reach potential customers, create opportunities, and turn leads into clients.",
           "examples": [
-            "Cold Callers and Appointment Setters",
-            "Sales Closers",
-            "Client Acquisition Specialists",
             "Lead Generation",
+            "Cold Callers and Appointment Setters",
+            "Client Acquisition Specialists",
+            "Sales Closers",
+            "Sales and Account Management",
             "Copywriting and Content Creation",
-            "Sales and Account Management"
-          ]
-        },
-        {
-          "id": "technology-development-specialized-services",
-          "name": "Technology, Development & Specialized Services",
-          "description": "Streamline your business with technology-driven solutions and specialized support. From custom applications to CRM development, we help simplify processes and improve your digital operations.",
-          "examples": [
-            "CRM Development and Automation",
-            "Customized Web Applications",
-            "ESL (English as a Second Language) Support",
-            "Shopify Technical Support",
-            "Business Process Solutions"
+            "Social Media Management"
           ]
         }
       ]
