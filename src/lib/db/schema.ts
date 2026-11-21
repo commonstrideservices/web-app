@@ -1,4 +1,4 @@
-import { boolean, date, integer, jsonb, pgTable, pgView, text, timestamp, uuid } from 'drizzle-orm/pg-core'
+import { boolean, date, integer, jsonb, pgSchema, pgTable, pgView, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import type { staffRoles } from '@/features/accounts/model'
 import type { contactStatuses } from '@/features/prospects/model'
 
@@ -76,3 +76,59 @@ export const prospectInbox = pgView('prospect_inbox', {
 export type Prospect = typeof prospects.$inferSelect
 export type Submission = typeof intakeSubmissions.$inferSelect
 export type ProspectInboxRow = typeof prospectInbox.$inferSelect
+
+const appPrivate = pgSchema('app_private')
+
+export const appSettings = appPrivate.table('app_settings', {
+  key: text('key').primaryKey(),
+  schema_version: integer('schema_version').notNull(),
+  value: jsonb('value').notNull(),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+})
+
+export const emailMailboxes = appPrivate.table('email_mailboxes', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  display_name: text('display_name').notNull(),
+  address: text('address').notNull(),
+  username: text('username').notNull(),
+  provider: text('provider').notNull(),
+  imap_host: text('imap_host').notNull(),
+  imap_port: integer('imap_port').notNull(),
+  imap_security: text('imap_security').notNull(),
+  smtp_host: text('smtp_host').notNull(),
+  smtp_port: integer('smtp_port').notNull(),
+  smtp_security: text('smtp_security').notNull(),
+  enabled: boolean('enabled').notNull().default(true),
+  is_default: boolean('is_default').notNull().default(false),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+})
+
+export const emailMailboxCredentials = appPrivate.table('email_mailbox_credentials', {
+  mailbox_id: uuid('mailbox_id').primaryKey(),
+  encrypted_password: text('encrypted_password').notNull(),
+  key_version: integer('key_version').notNull(),
+})
+
+export const emailTemplateFragments = appPrivate.table('email_template_fragments', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  kind: text('kind').$type<'header' | 'footer'>().notNull(),
+  name: text('name').notNull(),
+  html: text('html').notNull(),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+})
+
+export const emailTemplates = appPrivate.table('email_templates', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: text('name').notNull(),
+  subject: text('subject').notNull().default(''),
+  body: text('body').notNull(),
+  html: text('html'),
+  header_id: uuid('header_id'),
+  footer_id: uuid('footer_id'),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+})
+
+export const emailSendAttempts = appPrivate.table('email_send_attempts', {
+  id: uuid('id').primaryKey(),
+  created_at: timestamp('created_at', { withTimezone: true }).notNull().defaultNow(),
+})

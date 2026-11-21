@@ -49,6 +49,7 @@ The frontend can call `UserServerAction.createAccount(formData)` or pass `UserSe
 
 ## Admin inbox
 
+- Use the shared [admin status components](../../src/features/admin/components/admin-status.tsx) for feedback and semantic badges. Use success for confirmed outcomes, warning for partial or uncertain outcomes, error for failures, and info for notices. Keep the leading status icon and use the same semantic colors in both admin themes.
 - Use `/admin/login` for sign-in, `/admin` for the dashboard, and `/admin/prospects` for the inbox. Link dashboard totals to the relevant inbox filters.
 - Track email verification per submission. Display Unverified until email ownership is confirmed for that submission, then display Verified. Use a nullable verification timestamp so the inbox can show when confirmation occurred. Keep spam review independent of email verification.
 - Track contact status per prospect. Use Not contacted until staff reach the prospect, Contacted once they do, and Needs follow-up whenever another attempt or conversation is needed. Record the last contact attempt and the next follow-up date separately. Let staff combine email verification and contact filters and find prospects whose follow-up is due.

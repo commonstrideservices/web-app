@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import { ArrowUpRight } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
+import { AdminStatusBadge } from '@/features/admin/components/admin-status'
 import type { ProspectInboxRow } from '@/lib/db/schema'
 import { contactStatusLabels } from '../model'
 
 export function EmailVerification({ verifiedAt }: { verifiedAt: string | null }) {
-  return <Badge variant="outline">{verifiedAt ? 'Verified' : 'Unverified'}</Badge>
+  return <AdminStatusBadge tone={verifiedAt ? 'success' : 'warning'}>{verifiedAt ? 'Verified' : 'Unverified'}</AdminStatusBadge>
 }
 
 export function formatDay(day: string) {
@@ -41,10 +42,15 @@ export function ProspectList({ prospects, emptyMessage }: { prospects: ProspectI
               </Link>
               <p className="mt-0.5 max-w-64 break-all text-xs text-muted-foreground">{prospect.company_name || prospect.email}</p>
             </td>
-            <td className="px-4 py-3"><Badge variant="secondary">{contactStatusLabels[prospect.contact_status]}</Badge></td>
+            <td className="px-4 py-3">{prospect.contact_status === 'not_contacted'
+              ? <Badge variant="secondary">{contactStatusLabels[prospect.contact_status]}</Badge>
+              : <AdminStatusBadge tone={prospect.contact_status === 'contacted' ? 'success' : 'warning'}>
+                {contactStatusLabels[prospect.contact_status]}
+              </AdminStatusBadge>}</td>
             <td className="px-4 py-3"><EmailVerification verifiedAt={prospect.email_verified_at} /></td>
             <td className="px-4 py-3 whitespace-nowrap">{prospect.follow_up_on ? formatDay(prospect.follow_up_on) : '—'}</td>
-            <td className="px-4 py-3">{prospect.pending_count || '—'}</td>
+            <td className="px-4 py-3">{prospect.pending_count > 0
+              ? <AdminStatusBadge tone="warning">{prospect.pending_count}</AdminStatusBadge> : '—'}</td>
           </tr>)}
         </tbody>
       </table>
