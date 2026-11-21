@@ -2,10 +2,12 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { ExternalLink, LayoutDashboard, Mail, Settings2, Users, UserRoundCog } from 'lucide-react'
+import { Building2, ContactRound, ExternalLink, LayoutDashboard, Mail, Settings2, Users, UserRoundCog } from 'lucide-react'
 
 const items = [
   { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/admin/companies', label: 'Companies', icon: Building2 },
+  { href: '/admin/contacts', label: 'Contacts', icon: ContactRound },
   { href: '/admin/prospects', label: 'Prospects', icon: Users },
   { href: '/admin/accounts', label: 'Staff accounts', icon: UserRoundCog, admin: true },
 ]

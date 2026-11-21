@@ -16,6 +16,7 @@
     "admin:setup": "node --env-file-if-exists=.env --env-file-if-exists=.env scripts/issue-admin-setup-code.mjs"
   },
   "dependencies": {
+    "@base-ui/react": "1.9.0",
     "@radix-ui/react-slot": "^1.2.3",
     "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
