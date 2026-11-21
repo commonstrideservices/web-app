@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation'
 import { AdministratorSetupForm } from '@/features/accounts/components/account-forms'
 import { StaffAccessCard } from '@/features/accounts/components/staff-access-card'
 import { administratorSetupRequired } from '@/features/accounts/server/setup-service'
+import { AdminFeedback } from '@/features/admin/components/admin-status'
 
 export const metadata: Metadata = { title: 'Admin setup' }
 
@@ -11,10 +12,10 @@ export default async function AdministratorSetupPage() {
 
   return (
     <StaffAccessCard title="Set up your admin" description="Create the first administrator for Common Stride.">
-      <div className="mb-5 grid gap-2 rounded-md border border-border bg-secondary p-3 text-sm">
+      <AdminFeedback tone="info" className="mb-5">
         <p>Run this command in the project terminal, then paste the setup code below. The code expires in 15 minutes.</p>
-        <code className="font-mono font-semibold">npm run admin:setup</code>
-      </div>
+        <code className="mt-2 block font-mono font-semibold">npm run admin:setup</code>
+      </AdminFeedback>
       <AdministratorSetupForm />
     </StaffAccessCard>
   )

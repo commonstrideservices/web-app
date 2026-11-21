@@ -27,3 +27,10 @@ Replace the placeholder profiles in [Meet the Assistants](src/features/site/conf
 Run `npm run lint`, `npm run typecheck`, and `npm run build` to check the project. The homepage hero is an AI-generated illustration of colleagues at work.
 
 Service banner photos are from Unsplash. [Web Services](https://unsplash.com/photos/laptop-keyboard-and-mouse-on-a-desk-with-sunlight-ohxs8oPgQ9k), [Social Media](https://unsplash.com/photos/a-smartphone-on-a-laptop-with-coffee-notebook-and-pen-fcNMuWbM5MQ), [Lead Data Resources](https://unsplash.com/photos/hand-operating-laptop-displaying-data-spreadsheet-on-a-desk-qLf_ML_Rfq8), [VA Services](https://unsplash.com/photos/person-is-working-on-a-laptop-and-writing-in-a-notebook-45u1mboQtQE).
+
+## Admin email
+
+1. Apply the email migrations and set `EMAIL_ENCRYPTION_KEY` in the server environment. Generate a key with `openssl rand -base64 32` and keep the same key across deploys. Replacing it requires re-entering each mailbox password.
+2. Sign in as an administrator and open **Tools → App Configuration → Email**. Add a Porkbun hosted mailbox with its mailbox password, then use **Test connection** to verify both IMAP and SMTP from the deployed server. The Porkbun preset uses IMAP 993 over TLS and SMTP 587 with STARTTLS. The first enabled mailbox opens by default.
+3. Under **Templates**, save one HTML layout with `{{body}}` where the editable message belongs. Use inline CSS to style that part of the layout and optionally save a starting subject or message. **Tools → Email** opens the mail client in a new tab. Compose shows the selected template around your message as you type. Only the message body is editable in the layout.
+4. Send a test email to controlled Gmail, Outlook, and Apple Mail inboxes. Check that the message appears once in Porkbun's Sent folder and that the layout holds on phone and desktop widths.

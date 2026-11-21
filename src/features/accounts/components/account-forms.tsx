@@ -3,6 +3,7 @@
 import { useActionState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
+import { AdminActionFeedback } from '@/features/admin/components/admin-status'
 import { staffRoles, staffRoleLabels } from '../model'
 import { UserServerAction } from '../user-server-action'
 
@@ -15,7 +16,7 @@ export function LoginForm({ configured }: { configured: boolean }) {
     <label className="grid gap-2 text-sm font-medium">Password
       <Input name="password" type="password" autoComplete="current-password" required maxLength={72} />
     </label>
-    {result.message && <p role="alert" className="text-sm text-destructive">{result.message}</p>}
+    <AdminActionFeedback {...result} />
     <Button type="submit" className="mt-1 w-full" disabled={pending || !configured}>{pending ? 'Signing in…' : 'Sign in'}</Button>
   </form>
 }
@@ -47,7 +48,7 @@ export function AdministratorSetupForm() {
     <label className="grid gap-2 text-sm font-medium">Confirm password
       <Input name="confirmPassword" type="password" autoComplete="new-password" minLength={12} maxLength={72} required />
     </label>
-    {result.message && <p role="alert" className="text-sm text-destructive">{result.message}</p>}
+    <AdminActionFeedback {...result} />
     <Button type="submit" className="mt-1 w-full" disabled={pending}>{pending ? 'Creating administrator…' : 'Create administrator'}</Button>
   </form>
 }
@@ -61,7 +62,7 @@ export function CreateStaffForm() {
         {staffRoles.map((role) => <option key={role} value={role}>{staffRoleLabels[role]}</option>)}
       </select>
     </label>
-    {result.message && <p role={result.ok ? 'status' : 'alert'} className={`text-sm sm:col-span-2 ${result.ok ? 'text-foreground' : 'text-destructive'}`}>{result.message}</p>}
+    <AdminActionFeedback {...result} className="sm:col-span-2" />
     <div className="sm:col-span-2"><Button disabled={pending} type="submit">{pending ? 'Creating account…' : 'Create account'}</Button></div>
   </form>
 }

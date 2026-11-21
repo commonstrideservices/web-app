@@ -5,6 +5,7 @@ import { ArrowLeft } from 'lucide-react'
 import { z } from 'zod'
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { AdminFeedback, AdminStatusBadge } from '@/features/admin/components/admin-status'
 import { answerSnapshotSchema } from '@/features/intake/model'
 import { ContactWorkflowForm, ReviewSubmissionForm } from '@/features/prospects/components/prospect-forms'
 import { EmailVerification, formatTimestamp } from '@/features/prospects/components/prospect-list'
@@ -15,7 +16,7 @@ export const metadata: Metadata = { title: 'Prospect details' }
 
 function Answers({ submission }: { submission: Submission }) {
   const parsed = answerSnapshotSchema.safeParse(submission.answers)
-  if (!parsed.success) return <p className="text-sm text-muted-foreground">These answers could not be displayed.</p>
+  if (!parsed.success) return <AdminFeedback tone="error">These answers could not be displayed.</AdminFeedback>
   return <dl className="divide-y divide-border">
     {parsed.data.map((answer) => <div className="grid gap-1 py-3 first:pt-0 last:pb-0" key={answer.id}>
       <dt className="text-sm font-semibold">{answer.prompt}</dt>
@@ -95,7 +96,9 @@ export default async function ProspectPage({ params }: { params: Promise<{ id: s
             <CardContent className="grid gap-3">
               {past.map((submission) => <details className="rounded-lg border border-border p-4" key={submission.id}>
                 <summary className="cursor-pointer text-sm font-semibold">
-                  {formatTimestamp(submission.created_at)} <Badge variant="outline">{submission.review_status === 'dismissed' ? 'Dismissed' : 'Previously applied'}</Badge>
+                  {formatTimestamp(submission.created_at)} {submission.review_status === 'dismissed'
+                    ? <Badge variant="outline">Dismissed</Badge>
+                    : <AdminStatusBadge tone="success">Previously applied</AdminStatusBadge>}
                 </summary>
                 <div className="mt-4 grid gap-4">
                   <div><EmailVerification verifiedAt={submission.email_verified_at} /></div>

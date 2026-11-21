@@ -2,6 +2,7 @@
 
 import { startTransition, useActionState, useEffect, useRef, type FormEvent } from 'react'
 import { Button } from '@/components/ui/button'
+import { AdminActionFeedback } from '@/features/admin/components/admin-status'
 import type { Prospect } from '@/lib/db/schema'
 import { contactStatuses, contactStatusLabels } from '../model'
 import { ProspectServerAction } from '../prospect-server-action'
@@ -35,7 +36,7 @@ export function ContactWorkflowForm({ prospect }: { prospect: Prospect }) {
     <label className="grid gap-1.5 text-sm font-medium">Internal notes
       <textarea className="admin-field" rows={5} maxLength={4000} name="notes" defaultValue={prospect.notes} />
     </label>
-    {result.message && <p role={result.ok ? 'status' : 'alert'} className={`text-sm ${result.ok ? 'text-foreground' : 'text-destructive'}`}>{result.message}</p>}
+    <AdminActionFeedback {...result} />
     <div><Button type="submit" disabled={pending}>{pending ? 'Saving…' : 'Save workflow'}</Button></div>
   </form>
 }
@@ -52,6 +53,6 @@ export function ReviewSubmissionForm({ prospectId, submissionId, currentId }: {
       <Button type="submit" name="decision" value="apply" disabled={pending}>Apply update</Button>
       <Button type="submit" name="decision" value="dismiss" variant="outline" disabled={pending}>Dismiss update</Button>
     </div>
-    {result.message && <p role={result.ok ? 'status' : 'alert'} className={`text-sm ${result.ok ? 'text-foreground' : 'text-destructive'}`}>{result.message}</p>}
+    <AdminActionFeedback {...result} />
   </form>
 }
