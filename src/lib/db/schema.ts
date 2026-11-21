@@ -1,5 +1,6 @@
 import { boolean, date, integer, jsonb, pgSchema, pgTable, pgView, text, timestamp, uuid } from 'drizzle-orm/pg-core'
 import type { staffRoles } from '@/features/accounts/model'
+import type { CompanyMetadata, CompanyRelationship, ContactAffiliation, ContactMetadata } from '@/features/crm/model'
 import type { contactStatuses } from '@/features/prospects/model'
 
 // The Supabase SQL migrations own DDL, grants, triggers, and database functions.
@@ -78,6 +79,33 @@ export type Submission = typeof intakeSubmissions.$inferSelect
 export type ProspectInboxRow = typeof prospectInbox.$inferSelect
 
 const appPrivate = pgSchema('app_private')
+
+export const companies = appPrivate.table('companies', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  name: text('name').notNull(),
+  website: text('website'),
+  industry: text('industry'),
+  country: text('country'),
+  relationship: text('relationship').$type<CompanyRelationship>().notNull().default('unclassified'),
+  metadata: jsonb('metadata').$type<CompanyMetadata>().notNull().default({}),
+  created_at: timestampString('created_at').notNull().defaultNow(),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+  created_by: uuid('created_by'),
+  updated_by: uuid('updated_by'),
+})
+
+export const contacts = appPrivate.table('contacts', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  company_id: uuid('company_id').notNull(),
+  name: text('name').notNull(),
+  email: text('email'),
+  affiliation: text('affiliation').$type<ContactAffiliation>().notNull().default('unknown'),
+  metadata: jsonb('metadata').$type<ContactMetadata>().notNull().default({}),
+  created_at: timestampString('created_at').notNull().defaultNow(),
+  updated_at: timestampString('updated_at').notNull().defaultNow(),
+  created_by: uuid('created_by'),
+  updated_by: uuid('updated_by'),
+})
 
 export const appSettings = appPrivate.table('app_settings', {
   key: text('key').primaryKey(),
