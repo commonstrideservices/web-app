@@ -6,6 +6,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Check, CircleCheck } from 'lucide-
 import { z } from 'zod'
 import { IntakeServerAction } from '../intake-server-action'
 import { answersSchema, contactSchema, questionnaire, validateAnswer, type Answer, type Answers, type QuestionOption, type Step } from '../model'
+import { useInquiryAnalytics } from '@/features/analytics/components/analytics-provider'
 
 const draftKey = `common-stride:${questionnaire.id}:v${questionnaire.version}`
 const legacyDraftKey = `common-stride:${questionnaire.id}:v1`
@@ -75,6 +76,8 @@ function IntakeForm({ useDraft, startAnother }: { useDraft: boolean; startAnothe
   const [contact, setContact] = useState(emptyContact)
   const [error, setError] = useState('')
   const [result, submit, pending] = useActionState(IntakeServerAction.submit, { message: '' })
+  const trackLead = useInquiryAnalytics()
+  const leadTracked = useRef(false)
   const heading = useRef<HTMLHeadingElement>(null)
   const previousStep = useRef(draft.step)
   const step = questionnaire.steps[draft.step]
@@ -83,6 +86,12 @@ function IntakeForm({ useDraft, startAnother }: { useDraft: boolean; startAnothe
   const contactResult = step.type === 'contact-details' ? contactSchema.safeParse(contact) : null
   const contactErrors = contactResult?.success === false ? z.flattenError(contactResult.error).fieldErrors : null
   const canContinue = stepError === null && (contactResult?.success ?? true)
+
+  useEffect(() => {
+    if (!result.ok || leadTracked.current) return
+    leadTracked.current = true
+    trackLead()
+  }, [result.ok, trackLead])
 
   useEffect(() => {
     if (previousStep.current === draft.step) return

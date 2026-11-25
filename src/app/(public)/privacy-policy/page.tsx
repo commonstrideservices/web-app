@@ -47,6 +47,12 @@ export default function PrivacyPolicyPage() {
             <p>
               The inquiry form saves your progress and answers in your browser so you can resume later. The final contact fields are kept separately from this draft. The site clears the draft after a successful submission, and you can clear it yourself by deleting this site’s data in your browser settings. The staff area uses cookies for sign-in and to remember the display theme.
             </p>
+            <p className="mt-3">
+              With your permission, we use Google Analytics to understand public page visits and successful inquiry submissions. Google may process cookie identifiers and information about your browser, device, and site use. Our analytics events do not include your contact details or questionnaire answers, and we remove URL query strings and fragments from the page addresses we send. We do not enable advertising personalization or Google signals.
+            </p>
+            <p className="mt-3">
+              Analytics stays off until you accept it. You can reject analytics or change your choice using Analytics settings in the footer. We remember your choice in this browser for up to six months. Rejecting analytics stops future collection and removes this site’s Google Analytics cookies; it does not delete data already collected. Google processes analytics information under its <a href="https://policies.google.com/privacy" className={linkClass}>Privacy Policy</a> and may process it outside your country.
+            </p>
           </section>
 
           <section>

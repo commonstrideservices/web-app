@@ -28,6 +28,26 @@ Run `npm run lint`, `npm run typecheck`, and `npm run build` to check the projec
 
 Service banner photos are from Unsplash. [Web Services](https://unsplash.com/photos/laptop-keyboard-and-mouse-on-a-desk-with-sunlight-ohxs8oPgQ9k), [Social Media](https://unsplash.com/photos/a-smartphone-on-a-laptop-with-coffee-notebook-and-pen-fcNMuWbM5MQ), [Lead Data Resources](https://unsplash.com/photos/hand-operating-laptop-displaying-data-spreadsheet-on-a-desk-qLf_ML_Rfq8), [VA Services](https://unsplash.com/photos/person-is-working-on-a-laptop-and-writing-in-a-notebook-45u1mboQtQE).
 
+## Google Analytics
+
+The public website uses GA4 stream `G-1KJEN8YYC8`. No additional package or database migration is needed. `GOOGLE_ANALYTICS_ID` overrides the stream, and `GOOGLE_ANALYTICS_ENABLED=false` disables the integration. Set `SITE_URL=https://commonstrideservices.com` in the production environment (or your actual canonical origin). The tag only runs in a production build on that exact origin; Vercel previews and development are excluded. Other hosting providers must also disable analytics for staging using `GOOGLE_ANALYTICS_ENABLED=false`.
+
+Before deploying, open **Google Analytics → Admin → Data streams → Common Stride Website** and turn **Enhanced measurement off**. The app sends its own sanitized `page_view` and `generate_lead` events. Automatic history tracking can otherwise duplicate page views, and automatic form events can collect unintended data. Leave Google signals and user-provided data collection disabled; do not add another Analytics tag through Tag Manager or your hosting settings.
+
+Visitors can accept or reject analytics using the public banner and reopen it from **Analytics settings** in the footer. The choice lasts 180 days in browser storage. Google resources load only after acceptance. Revoking consent disables the tag and clears the site's `_ga` cookies. No events are backfilled after acceptance. Staff sign-in opens a new document so public scripts are not carried into admin pages.
+
+To preview the consent UI locally, run `npm run dev -- --webpack` and open `http://localhost:3000`. Development shows the same banner and footer settings, but never creates a tracker or loads Google's script, even after acceptance. If a previous local choice hides the banner, click **Analytics settings** in the footer to reopen it. Production and hosted preview deployments retain their normal tracking exclusions.
+
+After deployment:
+
+1. Visit the canonical site in a fresh browser session. Before acceptance, confirm there are no Google Analytics/tag requests or `_ga` cookies. Reject and refresh: the banner should stay closed and collection stay off.
+2. Open **Analytics settings**, accept, and navigate between public pages. Use **Realtime** in Google Analytics (or Tag Assistant) to confirm page views. Inspect event URLs to confirm they contain no query strings or fragments. Browser privacy features and blockers, including Brave Shields, can prevent collection even after consent; use a browser profile that permits Analytics for this verification.
+3. Submit a controlled test inquiry. Confirm one `generate_lead` event only after **Inquiry received**, without contact fields or questionnaire answers. Failed submissions must not produce this event. The test inquiry is a real database submission; use contact details you control.
+4. Reject via the footer and confirm subsequent navigation produces no analytics requests. Visit `/admin/login` and verify the admin document loads no Google tag.
+5. Once `generate_lead` appears in **Admin → Events**, mark it as a **key event** if you want inquiry conversions highlighted in reports. Standard reports can take time to populate.
+
+Run the project's lint, typecheck, and build checks before deploying. Use the production verification steps above to check real collection after deployment.
+
 ## Admin email
 
 1. Apply the email migrations and set `EMAIL_ENCRYPTION_KEY` in the server environment. Generate a key with `openssl rand -base64 32` and keep the same key across deploys. Replacing it requires re-entering each mailbox password.
