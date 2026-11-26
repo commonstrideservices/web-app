@@ -4,6 +4,18 @@ import { serviceCatalog } from '@/features/catalog/catalog'
 import { Brand } from '@/features/site/components/brand'
 import { MobileNavigation } from '@/features/site/components/mobile-navigation'
 import { SectionLink } from '@/features/site/components/section-link'
+import { AnalyticsProvider, AnalyticsSettingsButton } from '@/features/analytics/components/analytics-provider'
+import { analyticsConfiguration } from '@/features/analytics/tracker'
+import { siteUrl } from '@/features/site/metadata'
+
+const analytics = analyticsConfiguration({
+  nodeEnv: process.env.NODE_ENV,
+  deploymentEnv: process.env.VERCEL_ENV,
+  origin: siteUrl.origin,
+  measurementId: process.env.GOOGLE_ANALYTICS_ID?.trim() ?? 'G-1KJEN8YYC8',
+  enabled: process.env.GOOGLE_ANALYTICS_ENABLED,
+})
+const publicPaths = ['/', '/connect', '/privacy-policy', '/terms-of-service', ...serviceCatalog.map(({ id }) => `/${id}`)]
 
 const siteSections = [
   { id: 'services', label: 'Services' },
@@ -81,7 +93,10 @@ function SiteFooter() {
             <ul className="flex flex-wrap gap-x-5">
               <li><Link href="/privacy-policy" className="inline-flex min-h-11 items-center rounded-md hover:text-ink hover:underline">Privacy Policy</Link></li>
               <li><Link href="/terms-of-service" className="inline-flex min-h-11 items-center rounded-md hover:text-ink hover:underline">Terms of Service</Link></li>
-              <li><Link href="/admin/login" className="inline-flex min-h-11 items-center rounded-md hover:text-ink hover:underline">Staff sign-in</Link></li>
+              <li><AnalyticsSettingsButton /></li>
+              {/* A new document keeps public third-party scripts out of the staff area. */}
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Staff pages must open without the public Google tag. */}
+              <li><a href="/admin/login" className="inline-flex min-h-11 items-center rounded-md hover:text-ink hover:underline">Staff sign-in</a></li>
             </ul>
           </nav>
         </div>
@@ -92,11 +107,11 @@ function SiteFooter() {
 
 export default function PublicLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
+    <AnalyticsProvider configuration={analytics} publicPaths={publicPaths} previewConsent={process.env.NODE_ENV === 'development'}>
       <a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-20 focus:bg-white focus:p-3">Skip to content</a>
       <SiteHeader />
       <main id="main-content">{children}</main>
       <SiteFooter />
-    </>
+    </AnalyticsProvider>
   )
 }
